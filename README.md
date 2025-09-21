@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="icons/godtabs.png" alt="GodTabs" width="120" height="120" />
+  <img src="icons/godtabs.png" alt="GodTabs" width="700" height="500" />
 </p>
 
 # GodTabs 🙌
