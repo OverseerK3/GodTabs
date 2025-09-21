@@ -1,0 +1,42 @@
+/* Test styles for debugging popup layout */
+
+/* Force popup dimensions for testing */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 400px !important;
+  height: 600px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.popup-container {
+  width: 400px !important;
+  height: 600px !important;
+  box-sizing: border-box !important;
+  border: 2px solid red; /* Debug border - remove in production */
+}
+
+/* Debug info */
+.debug-info {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: yellow;
+  padding: 4px;
+  font-size: 10px;
+  z-index: 9999;
+}
+
+/* Add this temporarily to see popup dimensions */
+.popup-container::before {
+  content: "400x600px";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 2px 4px;
+  font-size: 10px;
+  z-index: 1000;
+}

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GodTabs Options</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/common.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="../icons/godTabs_Logo.png" alt="GodTabs" class="logo-icon">
+        <h1 class="logo-text">GodTabs Options</h1>
+      </div>
+      <div class="header-actions">
+        <button id="reset-settings" class="btn btn-secondary">
+          <i class="fas fa-undo"></i> Reset to Defaults
+        </button>
+        <button id="save-settings" class="btn btn-primary">
+          <i class="fas fa-save"></i> Save Settings
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="general">
+        <i class="fas fa-cog"></i> General
+      </button>
+      <button class="nav-tab" data-tab="shortcuts">
+        <i class="fas fa-keyboard"></i> Shortcuts
+      </button>
+      <button class="nav-tab" data-tab="tabs">
+        <i class="fas fa-window-maximize"></i> Tab Management
+      </button>
+      <button class="nav-tab" data-tab="sessions">
+        <i class="fas fa-archive"></i> Sessions
+      </button>
+      <button class="nav-tab" data-tab="workspaces">
+        <i class="fas fa-th-large"></i> Workspaces
+      </button>
+      <button class="nav-tab" data-tab="data">
+        <i class="fas fa-shield-alt"></i> Data & Privacy
+      </button>
+    </nav>
+
+    <!-- Content -->
+    <main class="content">
+      <!-- General Settings -->
+      <section id="general-tab" class="tab-content active">
+        <h2>General Settings</h2>
+        
+        <div class="setting-group">
+          <h3>Appearance</h3>
+          
+          <div class="setting-item">
+            <label for="theme-select">Theme</label>
+            <select id="theme-select" class="select">
+              <option value="auto">Auto (System)</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+            <p class="setting-description">Choose the color theme for the extension</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-tab-count" class="checkbox">
+              <span class="checkmark"></span>
+              Show tab count in popup
+            </label>
+            <p class="setting-description">Display the total number of tabs in the popup header</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-favicons" class="checkbox">
+              <span class="checkmark"></span>
+              Show website favicons
+            </label>
+            <p class="setting-description">Display website icons next to tab titles</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Behavior</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="close-popup-on-action" class="checkbox">
+              <span class="checkmark"></span>
+              Close popup after tab action
+            </label>
+            <p class="setting-description">Automatically close the popup when switching or closing tabs</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="remember-search" class="checkbox">
+              <span class="checkmark"></span>
+              Remember last search query
+            </label>
+            <p class="setting-description">Keep your last search when reopening the popup</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Keyboard Shortcuts -->
+      <section id="shortcuts-tab" class="tab-content">
+        <h2>Keyboard Shortcuts</h2>
+        
+        <div class="setting-group">
+          <h3>Extension Commands</h3>
+          
+          <div class="shortcut-item">
+            <div class="shortcut-info">
+              <label>Open GodTabs popup</label>
+              <p class="setting-description">Quick access to the tab management interface</p>
+            </div>
+            <div class="shortcut-key">
+              <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>
+            </div>
+          </div>
+          
+          <div class="shortcut-item">
+            <div class="shortcut-info">
+              <label>Save current session</label>
+              <p class="setting-description">Quickly save all open tabs as a session</p>
+            </div>
+            <div class="shortcut-key">
+              <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>
+            </div>
+          </div>
+          
+          <div class="shortcut-item">
+            <div class="shortcut-info">
+              <label>Create workspace</label>
+              <p class="setting-description">Save current tabs as a new workspace</p>
+            </div>
+            <div class="shortcut-key">
+              <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd>
+            </div>
+          </div>
+          
+          <div class="shortcut-item">
+            <div class="shortcut-info">
+              <label>Switch workspace</label>
+              <p class="setting-description">Cycle through available workspaces</p>
+            </div>
+            <div class="shortcut-key">
+              <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd>
+            </div>
+          </div>
+        </div>
+        
+        <div class="setting-group">
+          <h3>Settings</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="enable-shortcuts" class="checkbox">
+              <span class="checkmark"></span>
+              Enable keyboard shortcuts
+            </label>
+            <p class="setting-description">Allow keyboard shortcuts to work globally</p>
+          </div>
+          
+          <div class="info-box">
+            <p><strong>Note:</strong> To customize keyboard shortcuts, go to Chrome's Extensions page (chrome://extensions/), click on "Keyboard shortcuts" at the bottom, and find GodTabs in the list.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab Management -->
+      <section id="tabs-tab" class="tab-content">
+        <h2>Tab Management</h2>
+        
+        <div class="setting-group">
+          <h3>Automatic Actions</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="auto-close-duplicates" class="checkbox">
+              <span class="checkmark"></span>
+              Automatically close duplicate tabs
+            </label>
+            <p class="setting-description">Automatically close tabs with the same URL when opened</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="auto-group-tabs" class="checkbox">
+              <span class="checkmark"></span>
+              Auto-group tabs by domain
+            </label>
+            <p class="setting-description">Automatically group tabs from the same website</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Auto-Suspend Inactive Tabs</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="auto-close-inactive-tabs" class="checkbox">
+              <span class="checkmark"></span>
+              Automatically suspend inactive tabs
+            </label>
+            <p class="setting-description">Suspend tabs that haven't been visited for a specified time period to free up memory</p>
+          </div>
+          
+          <div class="setting-item">
+            <label for="inactive-tab-timeout">Inactivity timeout (minutes)</label>
+            <select id="inactive-tab-timeout" class="input">
+              <option value="30">30 minutes</option>
+              <option value="60">1 hour</option>
+              <option value="120">2 hours</option>
+              <option value="360">6 hours</option>
+              <option value="720">12 hours</option>
+              <option value="1440">24 hours</option>
+              <option value="2880">48 hours</option>
+              <option value="10080">1 week</option>
+            </select>
+            <p class="setting-description">Time before a tab is considered inactive and eligible for auto-suspension</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="exclude-pinned-from-auto-close" class="checkbox">
+              <span class="checkmark"></span>
+              Protect pinned tabs from auto-suspension
+            </label>
+            <p class="setting-description">Never auto-suspend pinned tabs regardless of inactivity</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="exclude-audible-from-auto-close" class="checkbox">
+              <span class="checkmark"></span>
+              Protect audio-playing tabs from auto-suspension
+            </label>
+            <p class="setting-description">Never auto-suspend tabs that are currently playing audio</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="notify-before-auto-close" class="checkbox">
+              <span class="checkmark"></span>
+              Show notification before auto-suspending tabs
+            </label>
+            <p class="setting-description">Display a notification when tabs are about to be auto-suspended</p>
+          </div>
+          
+          <div class="setting-item">
+            <label for="protected-domains">Protected domains (one per line)</label>
+            <textarea id="protected-domains" class="textarea" rows="4" placeholder="example.com&#10;*.google.com&#10;localhost"></textarea>
+            <p class="setting-description">Domains that should never be auto-suspended. Use *.domain.com for subdomains</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Tab History</h3>
+          
+          <div class="setting-item">
+            <label for="max-tab-history">Maximum tab history entries</label>
+            <input type="number" id="max-tab-history" class="input" min="10" max="1000" step="10">
+            <p class="setting-description">Number of recently closed tabs to remember</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="track-tab-history" class="checkbox">
+              <span class="checkmark"></span>
+              Track tab browsing history
+            </label>
+            <p class="setting-description">Keep a history of visited tabs for quick access</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Performance</h3>
+          
+          <div class="setting-item">
+            <label for="tab-limit">Maximum tabs per window warning</label>
+            <input type="number" id="tab-limit" class="input" min="10" max="200" step="5">
+            <p class="setting-description">Show warning when approaching this many tabs</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sessions -->
+      <section id="sessions-tab" class="tab-content">
+        <h2>Session Management</h2>
+        
+        <div class="setting-group">
+          <h3>Automatic Backup</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="enable-auto-backup" class="checkbox">
+              <span class="checkmark"></span>
+              Enable automatic session backup
+            </label>
+            <p class="setting-description">Automatically save your current tabs at regular intervals</p>
+          </div>
+          
+          <div class="setting-item">
+            <label for="backup-interval">Backup interval (minutes)</label>
+            <input type="number" id="backup-interval" class="input" min="5" max="1440" step="5">
+            <p class="setting-description">How often to automatically backup your session</p>
+          </div>
+          
+          <div class="setting-item">
+            <label for="max-sessions">Maximum saved sessions</label>
+            <input type="number" id="max-sessions" class="input" min="5" max="100" step="5">
+            <p class="setting-description">Number of sessions to keep before deleting oldest</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Session Options</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="include-pinned-tabs" class="checkbox">
+              <span class="checkmark"></span>
+              Include pinned tabs in sessions
+            </label>
+            <p class="setting-description">Save pinned tabs as part of session data</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="restore-active-tab" class="checkbox">
+              <span class="checkmark"></span>
+              Restore active tab when opening sessions
+            </label>
+            <p class="setting-description">Switch to the tab that was active when session was saved</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Auto-Save Settings</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="auto-save-enabled" class="checkbox">
+              <span class="checkmark"></span>
+              Enable automatic workspace saving
+            </label>
+            <p class="setting-description">Automatically saves workspace snapshots every 60 seconds for crash recovery</p>
+          </div>
+          
+          <div class="setting-item">
+            <label for="auto-save-interval">Auto-save interval (seconds)</label>
+            <input type="number" id="auto-save-interval" class="input" min="30" max="300" step="10">
+            <p class="setting-description">How often to automatically save workspace snapshots</p>
+          </div>
+          
+          <div class="setting-item">
+            <label for="max-auto-save-snapshots">Maximum auto-save snapshots</label>
+            <input type="number" id="max-auto-save-snapshots" class="input" min="5" max="50" step="5">
+            <p class="setting-description">Number of auto-save snapshots to keep before deleting oldest</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="enable-crash-recovery" class="checkbox">
+              <span class="checkmark"></span>
+              Enable crash recovery
+            </label>
+            <p class="setting-description">Automatically detect unexpected shutdowns and offer workspace restoration</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="auto-restore-on-startup" class="checkbox">
+              <span class="checkmark"></span>
+              Auto-restore workspaces on startup
+            </label>
+            <p class="setting-description">Automatically restore workspaces after browser crashes without asking</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-recovery-notifications" class="checkbox">
+              <span class="checkmark"></span>
+              Show recovery notifications
+            </label>
+            <p class="setting-description">Display notifications when recovery data is available</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Recovery Data</h3>
+          
+          <div class="data-display">
+            <div class="data-item">
+              <div class="data-info">
+                <span class="data-label">Auto-save status:</span>
+                <span id="auto-save-status-text" class="data-value">Loading...</span>
+              </div>
+            </div>
+            
+            <div class="data-item">
+              <div class="data-info">
+                <span class="data-label">Last save time:</span>
+                <span id="last-auto-save-time" class="data-value">Loading...</span>
+              </div>
+            </div>
+            
+            <div class="data-item">
+              <div class="data-info">
+                <span class="data-label">Stored snapshots:</span>
+                <span id="auto-save-snapshots-count" class="data-value">Loading...</span>
+              </div>
+            </div>
+            
+            <div class="data-item">
+              <div class="data-info">
+                <span class="data-label">Storage used:</span>
+                <span id="auto-save-storage-used" class="data-value">Loading...</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="setting-actions">
+            <button id="view-recovery-data" class="btn btn-secondary">
+              <i class="fas fa-eye"></i> View Recovery Data
+            </button>
+            <button id="clear-auto-save-data" class="btn btn-warning">
+              <i class="fas fa-trash"></i> Clear Auto-Save Data
+            </button>
+            <button id="test-recovery" class="btn btn-info">
+              <i class="fas fa-flask"></i> Test Recovery
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Workspaces -->
+      <section id="workspaces-tab" class="tab-content">
+        <h2>Workspace Management</h2>
+        
+        <div class="setting-group">
+          <h3>Workspace Options</h3>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="workspace-auto-save" class="checkbox">
+              <span class="checkmark"></span>
+              Auto-save workspaces on creation
+            </label>
+            <p class="setting-description">Automatically save workspace when switching between them</p>
+          </div>
+          
+          <div class="setting-item">
+            <label for="max-workspaces">Maximum saved workspaces</label>
+            <input type="number" id="max-workspaces" class="input" min="5" max="50" step="1">
+            <p class="setting-description">Number of workspaces to keep before deleting oldest</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="workspace-include-pinned" class="checkbox">
+              <span class="checkmark"></span>
+              Include pinned tabs in workspaces
+            </label>
+            <p class="setting-description">Save pinned tabs as part of workspace data</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="workspace-confirm-delete" class="checkbox">
+              <span class="checkmark"></span>
+              Confirm before deleting workspaces
+            </label>
+            <p class="setting-description">Show confirmation dialog when deleting workspaces</p>
+          </div>
+          
+          <div class="setting-item">
+            <label class="checkbox-label">
+              <input type="checkbox" id="workspace-confirm-switch" class="checkbox">
+              <span class="checkmark"></span>
+              Confirm before switching workspaces
+            </label>
+            <p class="setting-description">Show confirmation dialog when switching to different workspace</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Current Workspace Statistics</h3>
+          
+          <div class="setting-item">
+            <div class="data-info">
+              <label>Workspace Data Usage</label>
+              <div class="data-stats">
+                <div class="data-stat">
+                  <span class="data-label">Total Workspaces:</span>
+                  <span id="workspaces-count" class="data-value">Loading...</span>
+                </div>
+                <div class="data-stat">
+                  <span class="data-label">Active Workspace:</span>
+                  <span id="active-workspace" class="data-value">Loading...</span>
+                </div>
+                <div class="data-stat">
+                  <span class="data-label">Total Tabs Saved:</span>
+                  <span id="workspace-tabs-count" class="data-value">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Workspace Management</h3>
+          
+          <div class="setting-item">
+            <div class="action-buttons">
+              <button id="export-workspaces" class="btn btn-secondary">Export Workspaces</button>
+              <button id="import-workspaces" class="btn btn-secondary">Import Workspaces</button>
+            </div>
+            <p class="setting-description">Backup or restore your workspace data</p>
+          </div>
+          
+          <div class="setting-item">
+            <button id="clear-workspaces" class="btn btn-warning">Clear All Workspaces</button>
+            <p class="setting-description">Remove all saved workspaces (this action cannot be undone)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data & Privacy -->
+      <section id="data-tab" class="tab-content">
+        <h2>Data & Privacy</h2>
+        
+        <div class="setting-group">
+          <h3>Data Storage</h3>
+          
+          <div class="setting-item">
+            <div class="data-info">
+              <label>Extension Data Usage</label>
+              <div class="data-stats">
+                <div class="data-stat">
+                  <span class="data-label">Sessions:</span>
+                  <span id="sessions-count" class="data-value">Loading...</span>
+                </div>
+                <div class="data-stat">
+                  <span class="data-label">Workspaces:</span>
+                  <span id="data-workspaces-count" class="data-value">Loading...</span>
+                </div>
+                <div class="data-stat">
+                  <span class="data-label">Tab History:</span>
+                  <span id="history-count" class="data-value">Loading...</span>
+                </div>
+                <div class="data-stat">
+                  <span class="data-label">Settings:</span>
+                  <span id="settings-size" class="data-value">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Data Management</h3>
+          
+          <div class="setting-item">
+            <div class="action-buttons">
+              <button id="export-data" class="btn btn-secondary">Export Data</button>
+              <button id="import-data" class="btn btn-secondary">Import Data</button>
+            </div>
+            <p class="setting-description">Backup or restore your GodTabs data</p>
+          </div>
+          
+          <div class="setting-item">
+            <div class="action-buttons">
+              <button id="clear-sessions" class="btn btn-warning">Clear All Sessions</button>
+              <button id="clear-workspaces-data" class="btn btn-warning">Clear All Workspaces</button>
+              <button id="clear-history" class="btn btn-warning">Clear Tab History</button>
+            </div>
+            <p class="setting-description">Remove stored data (this action cannot be undone)</p>
+          </div>
+          
+          <div class="setting-item">
+            <button id="reset-all-data" class="btn btn-danger">Reset All Data</button>
+            <p class="setting-description">Clear all extension data and reset to default settings</p>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Privacy</h3>
+          
+          <div class="info-box">
+            <h4>Privacy Information</h4>
+            <ul>
+              <li>GodTabs stores all data locally on your device</li>
+              <li>No data is transmitted to external servers</li>
+              <li>Tab URLs and titles are only stored for functionality</li>
+              <li>You can clear all data at any time using the options above</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-info">
+        <p>GodTabs v1.0.0 - Ultimate tab management for power users</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="help-link">Help & Support</a>
+        <a href="#" id="feedback-link">Send Feedback</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Import Data Modal -->
+  <div id="import-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Import Data</h3>
+        <button id="close-import-modal" class="close-btn">×</button>
+      </div>
+      <div class="modal-body">
+        <p>Select a previously exported GodTabs data file:</p>
+        <input type="file" id="import-file" accept=".json" class="file-input">
+        <div class="modal-actions">
+          <button id="cancel-import" class="btn btn-secondary">Cancel</button>
+          <button id="confirm-import" class="btn btn-primary">Import</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success/Error Notifications -->
+  <div id="notification" class="notification hidden">
+    <span id="notification-message"></span>
+    <button id="close-notification" class="notification-close">×</button>
+  </div>
+
+  <script src="../scripts/utils.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

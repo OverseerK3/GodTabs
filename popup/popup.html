@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GodTabs</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/common.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <i class="fas fa-window-maximize logo-icon"></i>
+        <h1 class="logo-text">GodTabs</h1>
+      </div>
+      <div class="header-actions">
+        <button id="refresh-btn" class="icon-btn" title="Refresh tabs">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <button id="options-btn" class="icon-btn" title="Open options">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search and Filter Bar -->
+    <div class="search-section">
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search tabs..." class="search-input">
+        <button id="clear-search" class="clear-btn" title="Clear search">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="filter-buttons">
+        <button id="filter-all" class="filter-btn active" data-filter="all">
+          <i class="fas fa-list"></i> All
+        </button>
+        <button id="filter-pinned" class="filter-btn" data-filter="pinned">
+          <i class="fas fa-thumbtack"></i> Pinned
+        </button>
+        <button id="filter-audible" class="filter-btn" data-filter="audible">
+          <i class="fas fa-volume-up"></i> Audio
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button id="close-duplicates" class="action-btn">
+        <i class="fas fa-copy"></i>
+        Close Duplicates
+      </button>
+      <button id="save-session" class="action-btn">
+        <i class="fas fa-save"></i>
+        Save Session
+      </button>
+      <button id="create-workspace" class="action-btn">
+        <i class="fas fa-plus-square"></i>
+        Create Workspace
+      </button>
+      <button id="restore-session" class="action-btn">
+        <i class="fas fa-history"></i>
+        Restore Session
+      </button>
+      <button id="recover-workspaces" class="action-btn recovery-btn hidden">
+        <i class="fas fa-life-ring"></i>
+        Recover Workspaces
+      </button>
+    </div>
+
+    <!-- Tab Count -->
+    <div class="tab-count">
+      <span id="tab-counter">0 tabs</span>
+      <span id="filtered-counter" class="filtered-count hidden">0 filtered</span>
+    </div>
+
+    <!-- Tabs List -->
+    <div class="tabs-container">
+      <div id="tabs-list" class="tabs-list">
+        <!-- Tabs will be dynamically inserted here -->
+      </div>
+      <div id="no-tabs" class="no-tabs hidden">
+        <p>No tabs match your search criteria</p>
+      </div>
+      <div id="loading" class="loading">
+        <p>Loading tabs...</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-actions">
+        <button id="new-tab" class="footer-btn">
+          <i class="fas fa-plus"></i>
+          New Tab
+        </button>
+        <button id="close-all" class="footer-btn danger">
+          <i class="fas fa-times-circle"></i>
+          Close All
+        </button>
+        <button id="sessions-view" class="footer-btn">
+          <i class="fas fa-archive"></i>
+          Sessions
+        </button>
+        <button id="workspaces-view" class="footer-btn">
+          <i class="fas fa-th-large"></i>
+          Workspaces
+        </button>
+      </div>
+      <div class="auto-save-status" id="auto-save-status">
+        <i class="fas fa-save"></i>
+        <span id="auto-save-text">Auto-save enabled</span>
+        <span id="last-save-time" class="last-save-time hidden">Last saved: Never</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workspaces Modal -->
+  <div id="workspaces-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-th-large"></i> Saved Workspaces</h3>
+        <button id="close-workspaces-modal" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Workspace Creation Form -->
+        <div id="workspace-creation-form" class="workspace-creation-form hidden">
+          <h4><i class="fas fa-plus-square"></i> Create New Workspace</h4>
+          <input type="text" id="workspace-name-input" placeholder="Enter workspace name..." class="workspace-name-input">
+          <div class="form-actions">
+            <button id="cancel-workspace-creation" class="btn btn-secondary">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+            <button id="confirm-workspace-creation" class="btn btn-primary">
+              <i class="fas fa-check"></i> Create
+            </button>
+          </div>
+        </div>
+        
+        <!-- Workspaces List -->
+        <div id="workspaces-list" class="workspaces-list">
+          <!-- Workspaces will be dynamically inserted here -->
+        </div>
+        <div id="no-workspaces" class="no-workspaces hidden">
+          <p><i class="fas fa-folder-open"></i> No saved workspaces found</p>
+          <button id="create-first-workspace" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Create Your First Workspace
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sessions Modal -->
+  <div id="sessions-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-archive"></i> Saved Sessions</h3>
+        <button id="close-modal" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="sessions-list" class="sessions-list">
+          <!-- Sessions will be dynamically inserted here -->
+        </div>
+        <div id="no-sessions" class="no-sessions hidden">
+          <p><i class="fas fa-folder-open"></i> No saved sessions found</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recovery Modal -->
+  <div id="recovery-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-life-ring"></i> Workspace Recovery</h3>
+        <button id="close-recovery-modal" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="recovery-status">
+          <div class="recovery-info">
+            <p><i class="fas fa-info-circle"></i> Recovery data found from previous session</p>
+            <div id="recovery-summary" class="recovery-summary">
+              <!-- Recovery summary will be populated here -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="recovery-options">
+          <h4>Available Snapshots</h4>
+          <div id="recovery-list" class="recovery-list">
+            <!-- Recovery snapshots will be dynamically inserted here -->
+          </div>
+        </div>
+        
+        <div class="recovery-actions">
+          <button id="recover-selected" class="btn btn-primary" disabled>
+            <i class="fas fa-check"></i> Recover Selected
+          </button>
+          <button id="recover-all" class="btn btn-primary">
+            <i class="fas fa-download"></i> Recover All
+          </button>
+          <button id="dismiss-recovery" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Dismiss Recovery
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "godtabs",
+  "version": "1.0.0",
+  "description": "![GodTabs Logo](icons/godTabs_Logo.png)",
+  "main": "background.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13"
+  }
+}
